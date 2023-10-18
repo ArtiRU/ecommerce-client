@@ -10,7 +10,7 @@ type Query = {
   sizeId?: string;
 };
 
-const getProducts = async (query: Query): Promise<Product[]> => {
+export const getProducts = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     query: {
       categoryId: query.categoryId,
@@ -25,4 +25,8 @@ const getProducts = async (query: Query): Promise<Product[]> => {
   return response.json();
 };
 
-export default getProducts;
+export const getProduct = async (id: string): Promise<Product> => {
+  const response = await fetch(`${URL}/${id}`);
+
+  return response.json();
+};

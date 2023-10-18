@@ -19,7 +19,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const ShoppingCartIcon = <ShoppingCart className="text-gray-600" size={20} />;
 
   const handleClick = () => {
-    push(`/products/${product?.id}`);
+    push(`/product/${product?.id}`);
   };
 
   return (

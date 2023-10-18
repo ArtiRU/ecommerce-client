@@ -1,5 +1,5 @@
+import ProductCard from '@/components/product/product-card';
 import NoResults from '@/components/ui/no-results';
-import ProductCard from '@/components/ui/product-card';
 import { Product } from '@/types/types';
 import { FC } from 'react';
 

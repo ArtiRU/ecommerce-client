@@ -2,7 +2,7 @@ import Billboard from '@/components/billboard';
 import ProductList from '@/components/product/product-list';
 import Container from '@/components/ui/container';
 import getBillboard from '@/services/get-billboard';
-import getProducts from '@/services/get-products';
+import { getProducts } from '@/services/get-products';
 import { FC } from 'react';
 
 export const revalidate = 0;
