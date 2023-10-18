@@ -10,7 +10,7 @@ type Query = {
   sizeId?: string;
 };
 
-export const getProducts = async (query: Query): Promise<Product[]> => {
+export const productServiceTs = async (query: Query): Promise<Product[]> => {
   const url = qs.stringifyUrl({
     query: {
       categoryId: query.categoryId,

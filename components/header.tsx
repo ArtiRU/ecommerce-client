@@ -1,7 +1,7 @@
 import Navbar from '@/components/navbar/navbar';
 import NavbarActions from '@/components/navbar/navbar-actions';
 import Container from '@/components/ui/container';
-import getCategories from '@/services/get-categories';
+import { getCategories } from '@/services/category-service';
 import Link from 'next/link';
 import { FC } from 'react';
 

@@ -2,8 +2,10 @@ import Gallery from '@/components/gallery/gallery';
 import Info from '@/components/info';
 import ProductList from '@/components/product/product-list';
 import Container from '@/components/ui/container';
-import { getProduct, getProducts } from '@/services/get-products';
+import { getProduct, productServiceTs } from '@/services/product-service.ts';
 import { FC } from 'react';
+
+export const revalidate = 0;
 
 interface ProductIdPageProps {
   params: {
@@ -13,7 +15,7 @@ interface ProductIdPageProps {
 
 const ProductIdPage: FC<ProductIdPageProps> = async ({ params }) => {
   const product = await getProduct(params.productId);
-  const suggestedProducts = await getProducts({
+  const suggestedProducts = await productServiceTs({
     categoryId: product?.category?.id,
   });
   return (

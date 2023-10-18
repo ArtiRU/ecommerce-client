@@ -1,15 +1,17 @@
 import Billboard from '@/components/billboard';
 import ProductList from '@/components/product/product-list';
 import Container from '@/components/ui/container';
-import getBillboard from '@/services/get-billboard';
-import { getProducts } from '@/services/get-products';
+import billboardService from '@/services/billboard-service';
+import { productServiceTs } from '@/services/product-service.ts';
 import { FC } from 'react';
 
 export const revalidate = 0;
 
 const HomePage: FC = async () => {
-  const products = await getProducts({ isFeatured: true });
-  const billboard = await getBillboard('9a4f54fe-a15f-4eae-ac31-95c6b48863f1');
+  const products = await productServiceTs({ isFeatured: true });
+  const billboard = await billboardService(
+    '9a4f54fe-a15f-4eae-ac31-95c6b48863f1',
+  );
 
   return (
     <Container>
