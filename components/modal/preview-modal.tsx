@@ -3,7 +3,7 @@
 import Gallery from '@/components/gallery/gallery';
 import Info from '@/components/info';
 import Modal from '@/components/modal';
-import { useModalStore } from '@/hooks/useModalStore';
+import { useModalStore } from '@/hooks/use-modal-store';
 import { FC } from 'react';
 
 interface PreviewModalProps {}

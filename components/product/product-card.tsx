@@ -2,7 +2,8 @@
 
 import Currency from '@/components/ui/currency';
 import IconButton from '@/components/ui/icon-button';
-import { useModalStore } from '@/hooks/useModalStore';
+import { useCartStore } from '@/hooks/use-cart';
+import { useModalStore } from '@/hooks/use-modal-store';
 import { Product } from '@/types/types';
 import { Expand, ShoppingCart } from 'lucide-react';
 import Image from 'next/image';
@@ -15,6 +16,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const { push } = useRouter();
+  const cart = useCartStore();
   const { onOpen } = useModalStore();
 
   const ExpandIcon = <Expand className="text-gray-600" size={20} />;
@@ -30,6 +32,11 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
     onOpen(product);
   };
 
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+
+    cart.addItem(product);
+  };
   return (
     <div
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
@@ -45,7 +52,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton icon={ExpandIcon} onClick={onPreview} />
-            <IconButton icon={ShoppingCartIcon} onClick={() => {}} />
+            <IconButton icon={ShoppingCartIcon} onClick={onAddToCart} />
           </div>
         </div>
       </div>
