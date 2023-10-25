@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import Footer from '@/components/footer';
 import Header from '@/components/header';
+import ModalProvider from '@/providers/modal-provider';
 import { Urbanist } from 'next/font/google';
 import { ReactNode } from 'react';
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+        <ModalProvider />
         <Header />
         {children}
         <Footer />
