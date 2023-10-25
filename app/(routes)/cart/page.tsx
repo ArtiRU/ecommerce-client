@@ -4,12 +4,22 @@ import CartItem from '@/app/(routes)/cart/components/cart-item';
 import CartSummary from '@/app/(routes)/cart/components/cart-summary';
 import Container from '@/components/ui/container';
 import { useCartStore } from '@/hooks/use-cart';
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 interface CartPageProps {}
 
 const CartPage: FC<CartPageProps> = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const cart = useCartStore();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <div className="bg-white">
       <Container>
