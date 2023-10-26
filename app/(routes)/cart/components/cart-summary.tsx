@@ -50,7 +50,11 @@ const CartSummary: FC<CartSummaryProps> = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button className="w-full mt-6" onClick={onCheckout}>
+      <Button
+        className="w-full mt-6"
+        disabled={items.length === 0}
+        onClick={onCheckout}
+      >
         Checkout
       </Button>
     </div>

@@ -1,5 +1,7 @@
 import Button from '@/components/ui/button';
 import Currency from '@/components/ui/currency';
+import { useCartStore } from '@/hooks/use-cart';
+import { useModalStore } from '@/hooks/use-modal-store';
 import { Product } from '@/types/types';
 import { ShoppingCart } from 'lucide-react';
 import { FC } from 'react';
@@ -9,6 +11,13 @@ interface InfoProps {
 }
 
 const Info: FC<InfoProps> = ({ product }) => {
+  const { addItem } = useCartStore();
+  const { onClose } = useModalStore();
+
+  const onAddToCart = () => {
+    addItem(product);
+    onClose();
+  };
   return (
     <div className="">
       <h1 className="text-3xl font-bold text-gray-900">{product.name}</h1>
@@ -32,7 +41,7 @@ const Info: FC<InfoProps> = ({ product }) => {
         </div>
       </div>
       <div className="mt-10 flex items-center gap-x-3">
-        <Button className="flex items-center gap-x-2">
+        <Button className="flex items-center gap-x-2" onClick={onAddToCart}>
           Add To Cart
           <ShoppingCart />
         </Button>
