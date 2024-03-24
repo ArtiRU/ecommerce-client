@@ -7,9 +7,10 @@ interface IconButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined;
 }
 
-const IconButton: FC<IconButtonProps> = ({ className, icon, onClick }) => {
+const IconButton: FC<IconButtonProps> = ({ className, icon, onClick, ...props }) => {
   return (
     <button
+      {...props}
       className={cn(
         'rounded-full flex items-center justify-center ' +
           'bg-white border shadow-md p-2 hover:scale-110 transition',
