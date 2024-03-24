@@ -37,6 +37,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
 
     cart.addItem(product);
   };
+
   return (
     <div
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
@@ -52,12 +53,18 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center">
             <IconButton icon={ExpandIcon} onClick={onPreview} />
-            <IconButton icon={ShoppingCartIcon} onClick={onAddToCart} />
+            <IconButton
+              data-testid="product-card-button"
+              icon={ShoppingCartIcon}
+              onClick={onAddToCart}
+            />
           </div>
         </div>
       </div>
       <div>
-        <p className="font-semibold text-lg">{product.name}</p>
+        <p className="font-semibold text-lg" data-testid="product-card-name">
+          {product.name}
+        </p>
         <p className="text-gray-500 text-sm">{product.category?.name}</p>
       </div>
       <div className="flex items-center justify-between">
